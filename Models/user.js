@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var talks = ["For","Against"];
+
 // If user creates tag by himslef(This will be for future use
 var createdtagSchema = new mongoose.Schema({
  tagId:{type:mongoose.Schema.Types.ObjectId, ref:'tag'},
@@ -12,8 +13,9 @@ var participatedtagSchema = new mongoose.Schema({
  tagName:{type: String,required: true }
 });
 
+
 var userSchema = new mongoose.Schema({
-name:{ type: String,required: true },
+  name:{ type: String,required: true },
   phone:{ type: String, required: true,unique: true },
   email:{ type: String, unique: true },
   _password:{ type: String },
@@ -28,6 +30,6 @@ name:{ type: String,required: true },
   },
   createdtag:[createdtagSchema],
   participatedtag:[participatedtagSchema]
-}, {collection: 'user'});
+},{collection: 'user'});
 mongoose.model('user', userSchema);
 

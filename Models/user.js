@@ -9,7 +9,7 @@ var createdtagSchema = new mongoose.Schema({
 // In which tags user is chatted or participated
 var participatedtagSchema = new mongoose.Schema({
  tagId:{type:mongoose.Schema.Types.ObjectId, ref:'tag'},
- talkabout:{string,required,enum:talks},
+ talkabout:{type:String,required: true,enum:talks},
  tagName:{type: String,required: true }
 });
 
@@ -32,4 +32,3 @@ var userSchema = new mongoose.Schema({
   participatedtag:[participatedtagSchema]
 },{collection: 'user'});
 mongoose.model('user', userSchema);
-
